@@ -15,4 +15,5 @@ export default {
   "What will the employer see?": "Какие контактные данные увидит работодатель?",
   "Set it": "Укажите",
   "in settings": "в настройках",
+  "Mischief Managed!": "Шалость удалась",
 };

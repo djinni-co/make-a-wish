@@ -26,7 +26,8 @@
     UserTile,
     PageFooter,
     ApplyForm,
-    Button
+    Button,
+    Dude
   } from "../components";
   export let job = {};
 
@@ -49,6 +50,8 @@
   let applyMessage = "";
   let _fullDescriptionRef;
   let _descriptionRef;
+  let doMagic = false;
+  let spell;
 
   $: _submitWrapperTriggerHeight = _submitWrapperTriggerHeight
     ? _submitWrapperTriggerHeight
@@ -83,9 +86,6 @@
   }
   .blured {
     background: $lightFill;
-    .job-company-wrapper {
-      background: white;
-    }
   }
   // BREADCRUMBS
   ul.breadcrumbs {
@@ -120,51 +120,7 @@
       }
     }
   } // ul.breadcrumbs
-  .text-badge {
-    display: inline-block;
-    padding: 3px 8px;
-    font-size: 12px;
-    background: $lightFill;
-    color: $lightText;
-    border-radius: 5px;
-    margin: 10px 0;
-  }
-  .faded {
-    opacity: 0.5;
-  }
-  .sub-actions-wrapper {
-    cursor: pointer;
-    position: absolute;
-    margin-left: -65px;
-    // margin-top: 10px;
-    span,
-    a {
-      display: block;
-      padding: 10px;
-      margin-left: -10px;
-    }
-    a:hover {
-      i {
-        border-radius: 5px;
-        background: $lightFill;
-      }
-    }
-    & i {
-      font-size: 16px;
-      color: $black;
-      padding: 10px;
-    }
-    .back-button {
-      transition: 0.3s;
-      &:hover {
-        margin-left: -15px;
-        padding-right: 15px;
-      }
-    }
-    .edit-button {
-      margin-top: 5px;
-    }
-  }
+
   .summary-box {
     max-width: 600px;
     & h1,
@@ -202,13 +158,6 @@
       }
       span {
         padding-left: 20px;
-        // a {
-        //   color: $successText;
-        //   border-bottom: 1px dashed $successText;
-        //   &:hover {
-        //     border-bottom: none;
-        //   }
-        // }
       }
     }
   }
@@ -237,35 +186,16 @@
         font-size: 16px;
         margin-right: 25px;
         margin-top: -2px;
-        & .icon-eye,
-        & .icon-hand {
-          font-size: 17px;
-          margin-top: 1px;
-        }
       }
     }
   }
   .submit-wrapper {
     position: relative;
     max-width: 600px;
-    // &.hidden {
-    //   display: none !important;
-    // }
   }
-  .submit-wrapper,
-  .sticky-actions {
-    a.submit {
-      padding: 11px 15px;
-    }
-    & .submit {
+  .submit-wrapper {
+    .submit {
       display: inline-block;
-      & + .submit {
-        margin-top: 10px;
-      }
-    }
-    & .submit.linkedin-btn {
-      background: $accent;
-      min-width: auto;
     }
   }
   .form-wrapper {
@@ -303,10 +233,8 @@
       }
     }
     i {
-      // font-size: 16px;
       cursor: pointer;
       margin-right: 5px;
-      // display: inline-block;
     }
     .icon-star:hover {
       color: $lightText;
@@ -315,19 +243,7 @@
   .submit + .favorite-toggler-wrapper {
     margin-left: 10px;
   }
-  .job-hint-wrapper {
-    padding: 20px;
-    margin: 30px 0;
-    color: $lightText;
-    font-size: 13px;
-    border-left: 2px solid $lightBorder;
-    &.usertype-warning {
-      margin: 0;
-      a:hover {
-        text-decoration: underline;
-      }
-    }
-  }
+
   .job-teaser {
     display: block;
     width: 100%;
@@ -354,35 +270,7 @@
       line-height: 1.9;
     }
   }
-  .job-company-wrapper {
-    width: 100%;
-    background: $lightestFill;
-    & .job-company {
-      padding: 25px 35px 25px 30px;
-      margin: 0;
-      & p {
-        white-space: pre-wrap;
-        font-size: 15px;
-        line-height: 1.9;
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-        & i {
-          font-size: 12px;
-        }
-        // & small {
-        //   font-size: 13px;
-        // }
-        & a {
-          color: $lightText;
-          font-size: 13px;
-          &:hover {
-            color: $black;
-          }
-        }
-      }
-    }
-  }
+
   .author-wrapper {
     margin: 30px 0 40px;
   }
@@ -393,120 +281,12 @@
       padding-bottom: 65px;
     }
   }
-  .navigation-wrapper {
-    // display: block;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 600px;
-    position: relative;
-    margin: 40px 0 10px;
-    height: auto;
-    overflow-y: hidden;
-    padding: 20px 0 0;
-    text-align: right;
-    border-top: 1px dashed $lightBorder;
-    & + section {
-      margin-top: 20px;
-    }
-    .next-job-preview-wrapper {
-      padding: 0 20px;
-      text-align: right;
-      flex-grow: 1;
-    }
-    small {
-      // display: block;
-      color: $lightText;
-      font-size: 13px;
-      strong {
-        font-size: 12px;
-      }
-    }
-    a {
-      font-size: 13px;
-      // color: $lightText;
-      color: $black;
-      font-weight: 700;
-      &:hover {
-        color: $accent;
-        text-decoration: underline;
-      }
-    }
-    // .key-buttons-wrapper {
-    //   height: auto;
-    //   overflow: hidden;
-    //   margin-bottom: 20px;
-    // }
-    .key-button {
-      display: flex;
-      float: right;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      min-height: 40px;
-      border-radius: 12px;
-      border: 1px solid $lightBorder;
-      color: $lightText;
-      text-decoration: none;
-      & + a.key-button {
-        float: left;
-      }
-      &:hover {
-        text-decoration: none;
-        box-shadow: none;
-        border: 1px solid $lightBorder;
-      }
-      i {
-        font-size: 16px;
-        &.icon-right-open-big {
-          margin-left: 1px;
-        }
-        &.icon-left-open-big {
-          margin-right: 1px;
-        }
-      }
-    }
-  }
-  .related-jobs-wrapper {
-    margin: 50px 0;
-    h4 {
-      margin-bottom: 30px;
-    }
-    li {
-      margin: 30px 0;
-    }
-    p {
-      color: $lightText;
-    }
-  }
-  .sticky-actions {
-    position: fixed;
-    width: 100%;
-    bottom: -500px;
-    opacity: 0;
-    transition: 0.3s;
-    padding: 15px 20px;
-    box-sizing: border-box;
-    text-align: right;
-    z-index: 99;
-    &.active {
-      bottom: 0;
-      opacity: 1;
-    }
-  }
   @media (min-width: 1600px) {
     main.page-wrapper {
       width: 800px;
     }
   }
   @media (max-width: 1100px) {
-    .sticky-actions {
-      background: rgba(255, 255, 255, 0.9);
-      text-align: center;
-    }
     .page-footer-wrapper {
       z-index: 96;
     }
@@ -536,18 +316,7 @@
     .breadcrumbs {
       display: none;
     }
-    .sub-actions-wrapper {
-      position: relative;
-      display: block;
-      margin: -5px 0 10px -10px;
-      .back-button:hover {
-        margin-left: -10px;
-      }
-      a,
-      span {
-        display: inline-block;
-      }
-    }
+
     .page-footer-wrapper {
       max-width: none;
     }
@@ -561,15 +330,11 @@
       height: auto;
       overflow: hidden;
     }
-    .submit-wrapper,
-    .sticky-actions {
+    .submit-wrapper {
       .submit {
         display: block;
         width: 100%;
       }
-    }
-    .sticky-actions {
-      padding-bottom: 10px;
     }
     .submit + .favorite-toggler-wrapper {
       margin-left: 0;
@@ -581,14 +346,6 @@
       margin-top: 20px;
       height: 45px;
     }
-    .navigation-wrapper {
-      border-top: none;
-      padding-top: 0;
-      margin-top: 15px;
-      .next-job-preview-wrapper {
-        display: none;
-      }
-    }
     .page-footer-wrapper.spaced {
       padding-bottom: 130px;
     }
@@ -599,10 +356,7 @@
   <title>{job.title} — {lang && formatMessage('Djinni')}</title>
 </svelte:head>
 
-<svelte:window
-  bind:innerHeight={viewportHeight}
-  bind:scrollY={y}
-  on:keydown={_handleKeyDown} />
+<svelte:window bind:innerHeight={viewportHeight} bind:scrollY={y} />
 
 <header class="page-header">
   <Header pageName={$pageSettings.name} />
@@ -623,6 +377,12 @@
         <a href="/">{job.company.name}</a>
       </h2>
     {/if}
+    <!-- SUCCESS MESSAGE-->
+    <p class="success-message" in:fly={{ y: 20, duration: 300, delay: 300 }}>
+      <i class="icon-ok" />
+      <span>{lang && formatMessage('Mischief Managed!')}</span>
+    </p>
+    <!---->
     <ul class="summary">
       {#if job.language && job.language.name}
         <li>
@@ -658,7 +418,12 @@
         {lang && formatMessage('Apply')}
       </button>
       <div class="favorite-toggler-wrapper">
-        <span class:favorite={job.isFavorite} on:click={() => {}}>
+        <span
+          class:favorite={job.isFavorite}
+          on:click={() => {
+            spell = 'Lumos Maxima!';
+            doMagic = true;
+          }}>
           <i class={job.isFavorite ? 'icon-star' : 'icon-star-empty'} />
           {lang && formatMessage('Add to favorites')}
         </span>
@@ -671,7 +436,11 @@
       <ApplyForm
         bind:job
         bind:message={applyMessage}
-        handleSuccess={() => {}}
+        handleSuccess={() => {
+          spell = 'Expecto Patronum!';
+          doMagic = true;
+          showForm = false;
+        }}
         handleDismiss={() => {
           showForm = false;
         }} />
@@ -701,3 +470,7 @@
   class:blured={showForm}>
   <PageFooter type="candidate" auth={!!$profile.id} />
 </footer>
+
+<div class="dude-wrapper">
+  <Dude bind:show={doMagic} message={spell} />
+</div>

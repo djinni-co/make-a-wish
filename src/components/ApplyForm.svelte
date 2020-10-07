@@ -25,10 +25,11 @@
     });
   }
 
-  const _handleSubmit = () => {
+  const _handleSubmit = e => {
     // ***
     // Some tricky business goes here ...
     // ***
+    e.preventDefault();
     if (handleSuccess) handleSuccess();
   };
 </script>
@@ -232,11 +233,7 @@
 </style>
 
 <section class="job-chat-wrapper" id="chat-wrapper">
-  <form
-    method="post"
-    enctype="multipart/form-data"
-    bind:this={formRef}
-    id="applyForm">
+  <form bind:this={formRef} id="applyForm">
     <div class="job-message-wrapper">
       <div class="message-bubble">
         <textarea

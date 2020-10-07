@@ -15,4 +15,5 @@ export default {
   "What will the employer see?": "Які контактні дані побачить роботодавець?",
   "Set it": "Вкажіть",
   "in settings": "в налаштуваннях",
+  "Mischief Managed!": "Витівка вдалася!",
 };
