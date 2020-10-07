@@ -1,0 +1,18 @@
+export default {
+  "All jobs": "Всі вакансії",
+  Published: "Опубліковано",
+  Apply: "Вiдгукнутися",
+  "Add to favorites": "Додати в обране",
+  "In favorites": "В обраному",
+  "About company": "Про компанiю",
+  "About job": "Про вакансiю",
+  Terms: "Умови",
+  at: "в",
+  Message: "Повідомлення",
+  "Upload resume": "Завантажити резюме",
+  "Open contacts and send": "Відкрити контакти і відправити",
+  Cancel: "Відміна",
+  "What will the employer see?": "Які контактні дані побачить роботодавець?",
+  "Set it": "Вкажіть",
+  "in settings": "в налаштуваннях",
+};
